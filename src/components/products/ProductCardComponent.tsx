@@ -9,8 +9,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductResponse {
+  id: number;
   images: string[];
   title: string;
   description: string;
@@ -18,14 +20,15 @@ interface ProductResponse {
 }
 
 const ProductCardComponent = ({
+  id,
   images,
   title,
   description,
   price,
 }: ProductResponse) => {
   return (
-    <a
-      href="#"
+    <Link
+      href={`/products/${id}`}
       className={cn("block max-w-md transition-opacity hover:opacity-80")}
     >
       <Card className="h-full overflow-hidden p-0">
@@ -67,7 +70,7 @@ const ProductCardComponent = ({
           </div>
         </CardContent>
       </Card>
-    </a>
+    </Link>
   );
 };
 

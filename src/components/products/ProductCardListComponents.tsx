@@ -26,9 +26,7 @@ export default function ProductCardListComponents() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_DUMMY_BASE_URL}/products`
-        );
+        const res = await fetch("/api/products");
 
         if (!res.ok) {
           throw new Error("Failed to fetch products.");
@@ -64,6 +62,7 @@ export default function ProductCardListComponents() {
       {products.map(({ id, images, title, description, price }) => (
         <ProductCardComponent
           key={id}
+          id={id}
           images={images}
           title={title}
           description={description}
