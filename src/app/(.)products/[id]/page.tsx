@@ -1,8 +1,26 @@
+import ProductDetailUseSWRComponent from "@/components/products/detail/ProductDetailUseSWRComponent";
 
-import React from 'react'
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog"
 
-export default function ModalPage() {
+
+export default async function ModalProduct({
+  params
+}:{
+   params: Promise<{id: number}>
+}) {
+  const {id} = await params;
+
   return (
-    <div>ModalPage</div>
+  
+     <Dialog
+     open
+     >
+        <DialogContent className="sm:max-w-sm" >
+          <ProductDetailUseSWRComponent proId={id}/>
+        </DialogContent>
+    </Dialog>
   )
 }
