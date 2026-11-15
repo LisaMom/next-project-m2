@@ -128,7 +128,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
               <SidebarMenu>
                 {group.items.map((item) => (
                   <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton isActive={item.isActive} render={<a href={item.href} />}>{item.label}</SidebarMenuButton>
+                    <SidebarMenuButton isActive={item.isActive} render={<Link href={item.href} />}>{item.label}</SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
@@ -143,7 +143,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
             <SidebarMenu>
               {sidebarData.footerGroup.items.map((item) => (
                 <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton render={<a href={item.href} />}>{item.label}</SidebarMenuButton>
+                    <SidebarMenuButton render={<Link href={item.href} />}>{item.label}</SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -165,13 +165,13 @@ export default function DashboardLayout(
     children,
     users,
     team,
-    products
+    product
   }: {
-    className: SidebarComponentProps,
+    className?: string,
     children: React.ReactNode,
     users: React.ReactNode,
     team: React.ReactNode,
-    products: React.ReactNode
+    product: React.ReactNode
   }) {
   return (
     <SidebarProvider className={cn(className)}>
@@ -197,7 +197,7 @@ export default function DashboardLayout(
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 ">
           {/* <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
-          {products}
+          {product}
           {team}
           {users}
           {children}

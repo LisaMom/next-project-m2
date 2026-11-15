@@ -1,22 +1,41 @@
+import { NextResponse } from "next/server";
 
-import { NextRequest, NextResponse } from "next/server";
+const BASE_URL = process.env.DUMMY_BASE_URL;
 
-export async function GET(request: NextRequest, {
-    params
-}: {
-    params: Promise<{ id: string }>;
-}) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    // 1. Get dynamic ID from URL
     const { id } = await params;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_DUMMY_BASE_URL}/products/${id}`);
+    // 2. Fetch product from external API
+    const response = await fetch(
+      `${BASE_URL}/products/${id}`
+    );
 
-    if (!res.ok) {
-        return NextResponse.json(
-            { error: "Failed to fetch product from the upstream API." },
-            { status: res.status }
-        );
+    // 3. Check whether product exists
+    if (!response.ok) {
+      return NextResponse.json(
+        { message: "Product not found" },
+        { status: response.status }
+      );
     }
 
-    const product = await res.json();
+    // 4. Convert response into JSON
+    const product = await response.json();
+
+    // 5. Display data in server console
+    console.log("Product:", product);
+
+    // 6. Return product to client
     return NextResponse.json(product);
+
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }

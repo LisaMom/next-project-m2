@@ -1,13 +1,15 @@
 
 import React, { use } from 'react'
 import { ProductCardComponent } from './ProductCardComponent'
-interface ProductResponse {
-  id: number;
-  images: string[];
-  title: string;
-  description: string;
-  price: number;
-}
+import { ProductResponse } from './ProductCardComponent';
+// interface ProductResponse {
+  
+//   id?: number;
+//   images: string[];
+//   title: string;
+//   description: string;
+//   price: number;
+// }
 export default function ProductCardListUseHookComponent({
     product
 }
@@ -18,8 +20,9 @@ export default function ProductCardListUseHookComponent({
      const products = use(product);
   return (
        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-      {products.map(({ id, images, title, description, price }) => (
+      {products.map(({ id, images, title, description, price, num }) => (
         <ProductCardComponent
+          num={1}
           key={id}
           id={id}
           images={images}

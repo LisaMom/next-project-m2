@@ -60,8 +60,8 @@ const ProductCardDetailComponent = ({
           <div className="space-y-6">
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-muted-foreground uppercase">
-                  {product.category}
+                <p className="text-sm font-medium text-muted-foreground capitalize">
+                  Category: {product.category}
                 </p>
 
                 <h1 className="text-4xl font-bold tracking-tight">

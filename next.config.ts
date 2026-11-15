@@ -22,6 +22,14 @@ const nextConfig: NextConfig = {
        {
         protocol: 'https',
         hostname: 'cdn.dummyjson.com'      
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pinimg.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com',
       }
     ]
   }

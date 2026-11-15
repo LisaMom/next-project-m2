@@ -2,6 +2,9 @@ import { url } from "inspector";
 
 export const menuList = [
     {
+        url: '/', name: 'Home'
+    },
+    {
         url: '/products', name: 'Product'
     },
     {
@@ -9,5 +12,11 @@ export const menuList = [
     },
     {
         url: '/profile', name: 'Profile'
+    },
+    {
+        url: '/dashboard', name: 'Dashboard'
+    },
+    {
+        url: '/search', name: 'Search'
     },
 ]

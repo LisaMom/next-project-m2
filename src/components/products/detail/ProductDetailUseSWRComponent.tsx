@@ -1,8 +1,10 @@
 
 'use client'
 
+import { title } from "process";
 import { ProductCardDetailComponent } from "./ProductDetailComponent";
 import useSWR from 'swr'
+import { id } from "zod/locales";
 
 const fetcher = (url:string) => fetch(url).then(res => res.json())
 

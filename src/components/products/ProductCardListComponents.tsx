@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ProductCardComponent } from "./ProductCardComponent";
-
-interface ProductResponse {
-  id: number;
-  images: string[];
-  title: string;
-  description: string;
-  price: number;
-}
+import { ProductResponse } from "./ProductCardComponent";
 
 interface ProductsApiResponse {
   products: ProductResponse[];
@@ -62,6 +55,7 @@ export default function ProductCardListComponents() {
       {products.map(({ id, images, title, description, price }) => (
         <ProductCardComponent
           key={id}
+          num={1}
           id={id}
           images={images}
           title={title}

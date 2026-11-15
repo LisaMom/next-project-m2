@@ -11,24 +11,30 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-interface ProductResponse {
-  id: number;
+export interface ProductResponse {
+  num: number;
+  id?: number;
   images: string[];
   title: string;
   description: string;
   price: number;
+  category?: string;
 }
 
 const ProductCardComponent = ({
+  num,
   id,
   images,
   title,
   description,
   price,
+  category
 }: ProductResponse) => {
   return (
     <Link
-      href={`/products/${id}`}
+      href={category
+        ? `/products/${id}?category=${encodeURIComponent(category)}`
+        : `/products/${id}`}
       className={cn("block max-w-md transition-opacity hover:opacity-80")}
     >
       <Card className="h-full overflow-hidden p-0">
